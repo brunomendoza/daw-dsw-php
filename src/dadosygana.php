@@ -34,6 +34,11 @@
                 $sum += $result;
             }
 
+            if ($isDebugging) {
+                $sum = $facesPerDice * $diceQuantity;
+                // $sum = $currentDay;
+            }
+
             foreach ($values as $key => $value) {
             ?>
             <div class="dice">
@@ -43,8 +48,8 @@
             }
             ?>
         </div>
-        <div>
-            <button id="start-button">Probar</button>
+        <div class="play-button-wrapper">
+            <button id="start-button">Play Again!</button>
         </div>
         <div class="prize-wrapper">
             <h2>Prize</h2>
@@ -53,7 +58,7 @@
                 if ($sum == $facesPerDice * $diceQuantity) {
                     ?>
                     <div class="prize-title">
-                        <h3>Big Prize</h3>
+                        <h3>First Prize</h3>
                         <p>You have won <?php echo($price); ?>€</p>
                     </div>
                     <div class="prize-graphic">
@@ -66,7 +71,7 @@
                     ?>
                     </div>
                     <?php
-                } else if ($sum == $currentDay || $isDebugging) {
+                } else if ($sum == $currentDay) {
                     ?>
                     <div class="prize-title">
                         <h3>Second Prize</h3>
@@ -102,6 +107,8 @@
                     ?>
                     </div>
                     <?php
+                } else if (true) {
+                    
                 }
                 ?>
             </div>

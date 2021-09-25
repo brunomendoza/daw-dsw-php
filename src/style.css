@@ -27,6 +27,19 @@ body {
     background-color: whitesmoke;
 }
 
+.play-button-wrapper {
+    padding: 0 2rem;
+    margin: 1rem 0;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+}
+
+.play-button-wrapper button {
+    width: 9rem;
+    height: 3rem;
+}
+
 .dice {
     text-align: center;
     max-width: 96px;
@@ -36,12 +49,13 @@ body {
 .prize-graphic {
     display: flex;
     flex-flow: row wrap;
-    justify-content: space-between;
+    justify-content: center;
 }
 img.prize-note {
     display: block;
     padding: .75rem;
 }
+
 @media screen and (min-width: var(--small)) {
 
 }
