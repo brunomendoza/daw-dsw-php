@@ -1,0 +1,55 @@
+:root {
+    --small: 360px;
+    --medium: 800px;
+    --large: 1024px;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    box-sizing: border-box;
+}
+
+.wrapper {
+    padding: .50rem;
+    margin: 0 auto;
+    max-width: 360px;
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+.dice-wrapper {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    background-color: whitesmoke;
+}
+
+.dice {
+    text-align: center;
+    max-width: 96px;
+    padding: 2rem;
+}
+
+.prize-graphic {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+}
+img.prize-note {
+    display: block;
+    padding: .75rem;
+}
+@media screen and (min-width: var(--small)) {
+
+}
+
+@media screen and (min-width: var(--medium)) {
+
+}
+
+@media screen and (min-width: var(--large)) {
+
+}
