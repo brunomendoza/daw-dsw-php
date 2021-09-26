@@ -1,36 +1,25 @@
 <?php
 
-function getMatches($array) {
-    $internal = $array;
-    $result = array();
-    $number;
-    $m = 0;
-    $hasMatch = false;
+function greatest_match($values) {
+    $greatest = -1;
+    $current_value;
+    $values_length = count($values);
 
-    if (count($array) > 0) {
-        for ($i=0; $i < count($array); $i++) { 
-            $number = $array[$i];
-            
-            $j = 0;
+    if ($values_length > 1) {
+        for ($i=0; $i < $values_length; $i++) {
+            $current_value = $values[$i];
 
-            while (!$hasMatch && $j > count($internal)) {
-                if ($number = $array[$j]) {
-                    $result[$m] = $number;
-                    $m++;
-                    $hasMatch = true;
-                    $internal = array_slice(
-                        $internal,
-                        $j + 1
-                    )
+            if ($values_length > $i + 1) {
+                for ($j=$i + 1; $j < $values_length; $j++) { 
+                    if ($values[$j] == $current_value && $current_value > $greatest) {
+                        $greatest = $current_value;
+                    }
                 }
-
-                $j++;
-            }
+            } 
         }
-    } else {
-        return result;
     }
 
+    return $greatest;
 }
 
 ?>

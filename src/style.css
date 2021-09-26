@@ -51,9 +51,9 @@ body {
     flex-flow: row wrap;
     justify-content: center;
 }
-img.prize-note {
-    display: block;
-    padding: .75rem;
+
+.prize-graphic img {
+    padding: 1rem;
 }
 
 @media screen and (min-width: var(--small)) {

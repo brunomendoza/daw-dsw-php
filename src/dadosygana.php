@@ -11,6 +11,7 @@
     <div class="wrapper">
         <div class="dice-wrapper">
             <?php
+            include_once("./utils.php");
             date_default_timezone_set('Atlantic/Canary');
 
             $facesPerDice = 6;
@@ -25,14 +26,17 @@
             $price = $multiplier * 100;
 
             $secondPrize = rand(1, 4);
+            $greatest_value;
 
-            $isDebugging = true;
+            $isDebugging = false;
 
             for ($i=0; $i < $diceQuantity; $i++) { 
                 $result = rand(1, $facesPerDice);;
                 $values[$i] = $result;
                 $sum += $result;
             }
+
+            $greatest_value = greatest_match($values);
 
             if ($isDebugging) {
                 $sum = $facesPerDice * $diceQuantity;
@@ -107,8 +111,21 @@
                     ?>
                     </div>
                     <?php
-                } else if (true) {
-                    
+                } else if ($greatest_value > -1) {
+                    ?>
+                    <div class="prize-title">
+                        <h3>Third Prize</h3>
+                    </div>
+                    <div class="prize-graphic">
+                    <?php
+                    for ($i=0; $i < $greatest_value; $i++) { 
+                        ?>
+                    <img src="./assets/candy-60w.png" alt="">
+                    <?php
+                    }
+                    ?>
+                    </div>
+                    <?php
                 }
                 ?>
             </div>
