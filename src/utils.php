@@ -22,4 +22,34 @@ function greatest_match($values) {
     return $greatest;
 }
 
+function are_even($values) {
+    $are_even = true;
+    $values_length = count($values);
+    $i = 0;
+
+    if ($values_length > 0) {
+        while ($i < $values_length && $are_even) {
+            if ($values[$i] % 2 != 0) {
+                $are_even = false;
+            }
+
+            $i++;
+        }
+    }
+
+    return $are_even;
+}
+
+function at_least_two_six($values) {
+    $count = 0;
+
+    for ($i=0; $i < count($values); $i++) { 
+        if ($values[$i] == 6) {
+            $count++;
+        }
+    }
+
+    return $count > 1;
+}
+
 ?>

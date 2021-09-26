@@ -52,9 +52,6 @@
             }
             ?>
         </div>
-        <div class="play-button-wrapper">
-            <button id="start-button">Play Again!</button>
-        </div>
         <div class="prize-wrapper">
             <h2>Prize</h2>
             <div class="inner-prize-wrapper">
@@ -125,6 +122,23 @@
                     }
                     ?>
                     </div>
+                    <?php
+                    if (are_even($values) || at_least_two_six($values)) {
+                    ?>
+                    <div class="play-button-wrapper">
+                        <button id="start-button">Play Again!</button>
+                    </div>
+                    <?php
+                    }
+                } else if (are_even($values) || at_least_two_six($values)){
+                    ?>
+                    <div class="play-button-wrapper">
+                        <button id="start-button">Play Again!</button>
+                    </div>
+                    <?php
+                } else {
+                    ?>
+                    <p>Bad luck! :-(</p>
                     <?php
                 }
                 ?>
