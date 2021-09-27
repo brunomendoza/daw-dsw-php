@@ -62,6 +62,24 @@
             
                 return $count > 1;
             }
+
+            function get_candy_name() {
+                $number = rand(1, 3);
+
+                switch ($number) {
+                    case 1:
+                        return "piruletaverde-60w.png";
+                    
+                    case 2:
+                        return "piruletaroja-60w.png";
+
+                    case 3:
+                        return "piruletaamarilla-60w.png";
+                    
+                    default:
+                        break;
+                }
+            }
             
             date_default_timezone_set('Atlantic/Canary');
 
@@ -168,7 +186,7 @@
                     <?php
                     for ($i=0; $i < $greatest_value; $i++) { 
                         ?>
-                    <img src="./assets/candy-60w.png" alt="">
+                    <img src="<?php echo("./assets/".get_candy_name()); ?>" alt="">
                     <?php
                     }
                     ?>
