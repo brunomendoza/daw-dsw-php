@@ -56,6 +56,28 @@ body {
     padding: 1rem;
 }
 
+
+/* Cat and Mouse */
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+}
+
+.board__cell {
+    min-width: 120px;
+    min-height: 120px;
+    background-color: whitesmoke;
+}
+
+.board__cell--even {
+    background-color: red;
+}
+
+.board__cell--odd {
+    background-color: green;
+}
+
 @media screen and (min-width: var(--small)) {
 
 }

@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo("DAW &mdash; DSL") ?></title>
+    <title><?php echo("DAW &mdash; DSL"); ?></title>
 </head>
 <body>
     <div class="wrapper">
-        <a href="./dadosygana.php">Dice Game</a>
+    <a href="./dadosygana.php">Dice Game</a>
+    <a href="./cat_and_mouse.php">Cat and Mouse</a>
     </div>
 </body>
 </html>
