@@ -1,3 +1,15 @@
+<?php
+include_once('./classes/CharacterDTO.php');
+include_once('./classes/Location.php');
+
+setcookie("acme", "yeah", time() + 20);
+
+$character = new CharacterDTO("foo", "bar");
+$json = json_encode($character);
+setcookie("roadrunner", $json, time() + 3600);
+print_r(array_key_exists("acme", $_COOKIE));
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,20 +22,13 @@
 <body>
     <div id="root">
         <?php
-        include_once("./Location.php");
+        
+        include_once("./classes/Location.php");
 
         $columns = 5;
         $rows = 5;
         $values;
         $board = array();
-        
-        function generateRandomLocation($columnLength, $rowLength) {
-            $x = rand(0, $columnLength -1);
-            $y = rand(0, $rowLength - 1); 
-            return new Location(3, 2);
-        }
-
-        $locaction = generateRandomLocation($columns, $rows);
         
         ?>
             <div class="board">

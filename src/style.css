@@ -60,8 +60,13 @@ body {
 /* Cat and Mouse */
 
 .board {
+    margin: 0 auto;
+    padding: 0;
+    border: 2px solid whitesmoke;
+    box-sizing: border-box;
+    max-width: 604px;
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(5, minmax(min-content, 120px));
 }
 
 .board__cell {
@@ -70,12 +75,12 @@ body {
     background-color: whitesmoke;
 }
 
-.board__cell--even {
-    background-color: red;
+.board__cell:nth-child(even) {
+    background-color: whitesmoke;
 }
 
-.board__cell--odd {
-    background-color: green;
+.board__cell:nth-child(odd) {
+    background-color: transparent;
 }
 
 @media screen and (min-width: var(--small)) {
