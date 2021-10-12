@@ -1,20 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Roadrunner</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
-<h1>Fuck PHP!</h1>
-<div class="board">
 <?php
-require_once("./functions.php");
-initializeBoard(5, 5);
-?>
-</div>
-</body>
-</html>
+use acme\model\Location;
 
+require_once("./functions.php");
+
+$column = 5;
+$row = 5;
+
+$cookieName = "acme";
+removeCookie($cookieName);
+
+$someArray = array(
+    "roadrunner" => generateLocation($column, $row),
+    "coyote" => new Location(4, 5)
+);
+
+session_start();
+
+if (!isset($_SESSION[$cookieName])) {
+    $_SESSION[$cookieName] = json_encode(generateCharaterLocations(5, 5), JSON_PRETTY_PRINT);
+}
+
+echo($_SESSION[$cookieName]);
