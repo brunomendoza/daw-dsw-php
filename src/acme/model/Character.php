@@ -1,24 +1,35 @@
 <?php
 namespace acme\model;
 
-class Character {
+use JsonSerializable;
+
+class Character implements JsonSerializable {
     private string $pictureUrl;
     private Location $location;
+    private string $name;
 
-    function __construct(string $url, Location $location) {
+    public function __construct(string $name, string $url, Location $location) {
+        $this->name = $name;
         $this->url = $url;
         $this->location = $location;
     }
 
-    function getLocation() {
+    public function getLocation() {
         return $this->location;
     }
 
-    function getPictureUrl() {
+    public function getPictureUrl() {
         return $this->url;
     }
 
-    function toString() {
+    public function toString() {
         return printf("url: %s, location: [%d, %d]", $this->pictureUrl, $this->location->getX(), $this->location->getY());
+    }
+
+    public function jsonSerialize() {
+        return [
+            'url' => $this->url,
+            'location' => $this->location 
+        ];
     }
 }

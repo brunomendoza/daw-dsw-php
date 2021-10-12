@@ -1,28 +1,37 @@
 <?php
 namespace acme\model;
 
-class Location {
+use JsonSerializable;
+
+class Location implements JsonSerializable {
     private int $x;
     private int $y;
 
-    function __construct(int $x, int $y) {
+    public function __construct(int $x, int $y) {
         $this->x = $x;
         $this->y = $y;
     }
 
-    function getX() {
+    public function getX() {
         return $this->x;
     }
 
-    function getY() {
+    public function getY() {
         return $this->y;
     }
 
-    function areEqual($location) {
+    public function areEqual($location) {
         if ($this->x == $location->getX() && $this->y == $location->getY()) {
             return true;
         }
 
         return false;
+    }
+
+    public function jsonSerialize() {
+        return [
+            'x' => $this->x,
+            'y' => $this->y 
+        ];
     }
 }
