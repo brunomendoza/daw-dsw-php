@@ -1,6 +1,6 @@
 <?php
 
-require_once("./functions.php");
+require_once("functions.php");
 
 // $someArray = array();
 
@@ -19,3 +19,5 @@ require_once("./functions.php");
 // print_r($someArray);
 
 initializeBoard(5, 5);
+
+?>

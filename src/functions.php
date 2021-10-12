@@ -1,8 +1,10 @@
 <?php
 
-require_once("./acme/CharacterFactory.php");
+require_once("acme/CharacterFactory.php");
+require_once("acme/model/Location.php");
 
 use acme\CharacterFactory;
+use acme\model\Location;
 
 /**
  * Dices
@@ -46,9 +48,8 @@ function greatest_match($values) {
 // }
 
 function initializeBoard($columnLength, $rowLength) {
-
     $characterFactory = new CharacterFactory(5, 5);
-
+    
     $runnerCharacter = $characterFactory->createCharacter("runner", "./assets/acme/roadrunner-running-120w.png");
     $coyoteCharacter = $characterFactory->createCharacter("coyote", "./assets/acme/coyote-running-120w.png");
     $cliffCharacter = $characterFactory->createCharacter("cliff", "./assets/acme/cliff-120w.png");
@@ -73,7 +74,7 @@ function initializeBoard($columnLength, $rowLength) {
 }
   
 function cookieExists(string $cookieName) {
-    return array_key_exists($cookieName, $_COOKIE,);
+    return isset($_COOKIE[$cookieName]);
 }
 
 function removeCookie(string $cookieName) {
@@ -81,3 +82,5 @@ function removeCookie(string $cookieName) {
         setcookie($cookieName, "", time() - 3600);
     }
 }
+
+?>

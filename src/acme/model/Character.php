@@ -28,6 +28,7 @@ class Character implements JsonSerializable {
 
     public function jsonSerialize() {
         return [
+            "name" => $this->name,
             'url' => $this->url,
             'location' => $this->location 
         ];

@@ -1,13 +1,12 @@
 <?php
 namespace acme;
 
-// require_once("./model/Location.php");
-// require_once("./model/Character.php");
+require_once("model/Character.php");
+require_once("model/Location.php");
 
-use model\{Character, Location};
+use acme\model\{Character, Location};
 
 class CharacterFactory {
-    private array $locations;
     private array $characters;
     private int $column;
     private int $row;
@@ -36,19 +35,14 @@ class CharacterFactory {
     }
 
     private function locationExists(Location $location) {
-        $locationExists = false;
-        $i = 0;
-    
-        if (count($this->locations) > 0) {
-            while (!$locationExists && $i < count($this->locations)) {
-                if ($this->locations[$i]->areEqual($location)) {
-                    $locationExists = true;
-                }
-    
-                $i++;
+        foreach ($characters as $name => $character) {
+            if ($character->getLocation()->areEqual($location)) {
+                return true;
             }
         }
-    
-        return $locationExists;
+
+        return false;
     }
 }
+
+?>

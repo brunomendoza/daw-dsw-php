@@ -35,3 +35,5 @@ class Location implements JsonSerializable {
         ];
     }
 }
+
+?>
