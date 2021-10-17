@@ -28,24 +28,18 @@ include_once("./functions.php");
                     <h2>Running</h2>
                     <ul>
                         <?php
-                        $cookieName = "acme";
-                        if (cookieExists($cookieName)) {
+                        $cookieName = "acme_game";
+                        if (cookieExists($cookieName)):
                         ?>
                         <li>
-                            <a href="./resume_game.php">Resume Cat and Mouse Game</a>
-                        </li>
-                        <li>
-                            <a href="./start_game.php">Start Cat and Mouse Game</a>
+                            <a href="./resume_game.php">Resume ACME game</a>
                         </li>
                         <?php
-                        } else {
+                        endif
                         ?>
                         <li>
-                            <a href="./start_game.php">Start Cat and Mouse Game</a>
+                            <a href="./restart_game.php">Start ACME game</a>
                         </li>
-                        <?php
-                        }
-                        ?>
                     </ul>
                 </div>
             </li>

@@ -1,21 +1,11 @@
 <?php
+$cookieName = "acme_game";
+$hasStartedCookieName = "acme_game_has_started";
 
-require_once("acme/CharacterFactory.php");
-
-use acme\CharacterFactory;
+setcookie($hasStartedCookieName, 0, time() + 24 * 60 * 60);
 
 session_start();
 
-if (isset($_SESSION["acme"])) {
-    $objCharacters = json_decode($_SESSION["acme"]);
-    print_r($objCharacters);
-    foreach ($objCharacters as $key => $character) {
-        echo $character->name;
-        echo $character->url;
-        echo $character->location->x;
-        echo $character->location->y;
-        echo "\r\n";
-    }
-} else {
-    echo "Ups!";
-}
+$_SESSION[$cookieName] = $_COOKIE[$cookieName];
+
+header("Location: start_game.php");

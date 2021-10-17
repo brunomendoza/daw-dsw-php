@@ -59,28 +59,68 @@ body {
 
 /* Cat and Mouse */
 
-.board {
+.acme__wrapper {
+    margin: 0;
+    padding: 0;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.acme__board {
     margin: 0 auto;
     padding: 0;
-    border: 2px solid whitesmoke;
     box-sizing: border-box;
-    max-width: 604px;
     display: grid;
     grid-template-columns: repeat(5, minmax(min-content, 120px));
 }
 
-.board__cell {
-    min-width: 120px;
-    min-height: 120px;
+.acme__cell {
+    margin:0;
+    padding: 0;
+    width: 120px;
+    height: 120px;
     background-color: whitesmoke;
 }
 
-.board__cell:nth-child(even) {
+.acme__cell img {
+    margin: 0;
+    padding: 0;
+}
+
+.acme__cell:nth-child(even) {
     background-color: whitesmoke;
 }
 
-.board__cell:nth-child(odd) {
+.acme__cell:nth-child(odd) {
     background-color: transparent;
+}
+
+.acme__controls {
+    margin-top: 2rem;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.acme__controls a {
+    color: crimson;
+    background-color: whitesmoke;
+    text-decoration: none;
+    text-align: center;
+    display: block;
+    min-width: 12rem;
+    padding: 1rem;
+    font-weight: bold;
+}
+
+/* .acme__controls a:visited {
+    color: crimson;
+    background-color: whitesmoke;
+} */
+
+.acme__controls a:hover {
+    color: white;
+    background-color: black;
 }
 
 @media screen and (min-width: var(--small)) {

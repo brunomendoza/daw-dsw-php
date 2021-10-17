@@ -22,6 +22,10 @@ class Character implements JsonSerializable {
         return $this->url;
     }
 
+    public function getName() {
+        return $this->name;
+    }
+
     public function toString() {
         return printf("url: %s, location: [%d, %d]", $this->pictureUrl, $this->location->getX(), $this->location->getY());
     }
