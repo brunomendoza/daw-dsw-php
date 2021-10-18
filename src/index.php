@@ -30,7 +30,7 @@ include_once("./functions.php");
                         <?php
                         $cookieName = "acme_game";
                         if (cookieExists($cookieName)):
-                        ?>
+                            ?>
                         <li>
                             <a href="./resume_game.php">Resume ACME game</a>
                         </li>
@@ -39,6 +39,16 @@ include_once("./functions.php");
                         ?>
                         <li>
                             <a href="./restart_game.php">Start ACME game</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <h2>Connect Four</h2>
+                    <ul>
+                        <li>
+                            <a href="./connectfour/connect_four.php">Connect Four</a>
                         </li>
                     </ul>
                 </div>

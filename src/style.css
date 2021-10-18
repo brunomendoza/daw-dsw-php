@@ -113,14 +113,24 @@ body {
     font-weight: bold;
 }
 
-/* .acme__controls a:visited {
-    color: crimson;
-    background-color: whitesmoke;
-} */
-
 .acme__controls a:hover {
     color: white;
     background-color: black;
+}
+
+/* Connect 4 */
+
+.connectfour__wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.connectfour__wrapper > .control__group {
+    display: flex;
+    flex-flow: row nowrap;
+    min-width: 5rem;
+}
+.connectfour__wrapper > .control__group > label {
+    display: block;
 }
 
 @media screen and (min-width: var(--small)) {
