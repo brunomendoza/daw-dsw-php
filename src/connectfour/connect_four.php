@@ -29,6 +29,7 @@ if ($isPostRequest) {
 </head>
 <body>
     <div class="connectfour__wrapper">
+        <h1>Connect 4</h1>
         <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <fieldset>
                 <legend>Player 1</legend>
@@ -176,7 +177,7 @@ if ($isPostRequest) {
                     </span> 
                 </div>
             </fieldset>
-            <button type="submit">Jugar</button>
+            <button type="submit">Play</button>
         </form>
     </div>
 </body>
