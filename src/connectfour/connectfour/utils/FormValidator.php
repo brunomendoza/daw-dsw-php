@@ -56,7 +56,7 @@ class FormValidator {
                 }
             }
 
-            if (strcmp($this->formData["p1Color"], $this->formData["p2Color"])) {
+            if (strcmp($this->formData["p1Color"], $this->formData["p2Color"]) == 0) {
                 $errorMessages["colorAreEqual"] = "Player color has to be different";
             }
         }

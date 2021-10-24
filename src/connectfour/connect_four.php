@@ -119,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         Red
                         <input type="radio" name="p2Color" id="p2-color-red" value="red" checked>
                     </label>
-                    <label for="last-name">
+                    <label for="p2-color-blue">
                         Blue
                         <input type="radio" name="p2Color" id="p2-color-blue" value="blue">
                     </label>
