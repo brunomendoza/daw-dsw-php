@@ -52,7 +52,7 @@ class FormValidator {
         if (!$isUnavailable) {
             foreach ($this->formData as $fieldName => $fieldValue) {
                 if (empty($fieldValue)) {
-                    $errorMessages[$fieldName] = sprintf("%s can't by empty", $fieldName);
+                    $errorMessages[$fieldName] = sprintf("%s can't be empty", $fieldName);
                 }
             }
 
