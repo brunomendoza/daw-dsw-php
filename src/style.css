@@ -138,12 +138,17 @@ body {
     display: block;
     min-width: 6rem;
 }
-.connectfour__wrapper .error_message {
-    background-color: orange;
+.connectfour__wrapper .error__message {
+    padding: 0 1rem;
+    color: red;
 }
 .connectfour__wrapper form button[type=submit] {
     min-width: 6rem;
     padding: 1rem;
+}
+.connectfour__wrapper .hidden {
+    visibility: hidden;
+    display: none;
 }
 @media screen and (min-width: var(--small)) {
 
