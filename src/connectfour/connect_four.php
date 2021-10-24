@@ -1,3 +1,20 @@
+<?php
+
+require_once("connectfour/utils/FormValidator.php");
+use connectfour\utils\FormValidator;
+
+$errorMessages;
+$formValidator;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $formValidator = new FormValidator($_POST);
+    $errorMessages = $formValidator->validateForm();
+
+    var_dump($errorMessages);
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,11 +22,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Connect Four &mdash; Game</title>
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./../style.css">
 </head>
 <body>
     <div class="connectfour__wrapper">
-        <form action="./game.php" method="post">
+        <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
             <fieldset>
                 <legend>Player 1</legend>
                 <div class="control__group">
@@ -98,10 +115,14 @@
                     </select>
                 </div>
                 <div class="control__group">
-                    <label for="p2-color-red">Red</label>
-                    <input type="radio" name="p2Color" id="p2-color-red" value="red" checked>
-                    <label for="last-name">Blue</label>
-                    <input type="radio" name="p2Color" id="p2-color-blue" value="blue">
+                    <label for="p2-color-red">
+                        Red
+                        <input type="radio" name="p2Color" id="p2-color-red" value="red" checked>
+                    </label>
+                    <label for="last-name">
+                        Blue
+                        <input type="radio" name="p2Color" id="p2-color-blue" value="blue">
+                    </label>
                 </div>
             </fieldset>
             <button type="submit">Jugar</button>

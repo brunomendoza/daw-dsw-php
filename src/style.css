@@ -124,15 +124,27 @@ body {
     max-width: 800px;
     margin: 0 auto;
 }
-.connectfour__wrapper > .control__group {
+.connectfour__wrapper fieldset {
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.connectfour__wrapper .control__group {
     display: flex;
     flex-flow: row nowrap;
+    margin-bottom: 1rem;
     min-width: 5rem;
 }
-.connectfour__wrapper > .control__group > label {
+.connectfour__wrapper .control__group label {
     display: block;
+    min-width: 6rem;
 }
-
+.connectfour__wrapper .error_message {
+    background-color: orange;
+}
+.connectfour__wrapper form button[type=submit] {
+    min-width: 6rem;
+    padding: 1rem;
+}
 @media screen and (min-width: var(--small)) {
 
 }
