@@ -1,10 +1,18 @@
 <?php
 
 require_once("connectfour/utils/FormValidator.php");
+require_once("connectfour/model/Player.php");
+
 use connectfour\utils\FormValidator;
+use connectfour\model\Player;
 
 $errorMessages;
 $formValidator;
+$player1;
+$player2;
+$jsonPlayers;
+
+$connectFourCookieName = "connect_four";
 
 $isPostRequest = $_SERVER["REQUEST_METHOD"] == "POST";
 
@@ -13,6 +21,36 @@ if ($isPostRequest) {
     $errorMessages = $formValidator->validateForm();
 
     if (count($errorMessages) == 0) {
+        $player1 = new Player(
+            $_POST["p1FirstName"],
+            $_POST["p1LastName"],
+            $_POST["p1Color"],
+            $_POST["p1Address"],
+            $_POST["p1Country"],
+            $_POST["p1Province"],
+            $_POST["p1Age"],
+        );
+
+        $player2 = new Player(
+            $_POST["p2FirstName"],
+            $_POST["p2LastName"],
+            $_POST["p2Color"],
+            $_POST["p2Address"],
+            $_POST["p2Country"],
+            $_POST["p2Province"],
+            $_POST["p2Age"],
+        );
+
+        $jsonPlayers = json_encode(array(
+            "player1" => $player1,
+            "player2" => $player2,
+        ));
+
+        session_start();
+
+        $_SESSION[$connectFourCookieName] = $jsonPlayers;
+
+        header("Location: game.php");
     }
 }
 
