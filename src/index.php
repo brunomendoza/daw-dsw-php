@@ -1,5 +1,5 @@
 <?php
-include_once("./functions.php");
+include_once("./acme/functions.php");
 ?>
 
 <!DOCTYPE html>
@@ -18,7 +18,7 @@ include_once("./functions.php");
                     <h2>Dices</h2>
                     <ul>
                         <li>
-                            <a href="./dadosygana.php">Dice Game</a>
+                            <a href="./dices/dadosygana.php">Dice Game</a>
                         </li>
                     </ul>
                 </div>
@@ -32,13 +32,13 @@ include_once("./functions.php");
                         if (cookieExists($cookieName)):
                             ?>
                         <li>
-                            <a href="./resume_game.php">Resume ACME game</a>
+                            <a href="./acme/resume_game.php">Resume ACME game</a>
                         </li>
                         <?php
                         endif
                         ?>
                         <li>
-                            <a href="./restart_game.php">Start ACME game</a>
+                            <a href="./acme/restart_game.php">Start ACME game</a>
                         </li>
                     </ul>
                 </div>

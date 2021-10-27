@@ -1,0 +1,60 @@
+/* Connect 4 */
+
+.connectfour__wrapper {
+    max-width: 800px;
+    margin: 0 auto;
+}
+.connectfour__wrapper fieldset {
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.connectfour__wrapper .control__group {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: 1rem;
+    min-width: 5rem;
+}
+.connectfour__wrapper .control__group label {
+    display: block;
+    min-width: 6rem;
+}
+.connectfour__wrapper .error__message {
+    padding: 0 1rem;
+    color: red;
+}
+.connectfour__wrapper form button[type=submit] {
+    min-width: 6rem;
+    padding: 1rem;
+}
+.connectfour__wrapper .hidden {
+    visibility: hidden;
+    display: none;
+}
+.connectfour__wrapper table {
+    width: 100%;
+}
+.connectfour__wrapper table th {
+    font-weight: bold;
+}
+.connectfour__wrapper table td,
+.connectfour__wrapper table th {
+    padding: .5rem;
+}
+.connectfour__wrapper table tr:nth-child(even) {
+    background-color: whitesmoke;
+}
+.connectfour__wrapper table td:first-child {
+    font-weight: bold;
+}
+
+@media screen and (min-width: var(--small)) {
+
+}
+
+@media screen and (min-width: var(--medium)) {
+
+}
+
+@media screen and (min-width: var(--large)) {
+
+}

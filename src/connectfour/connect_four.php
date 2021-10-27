@@ -12,7 +12,7 @@ $player1;
 $player2;
 $jsonPlayers;
 
-$connectFourCookieName = "connect_four";
+$connectFourCookieName = "connectfour";
 
 $isPostRequest = $_SERVER["REQUEST_METHOD"] == "POST";
 
