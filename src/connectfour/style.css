@@ -1,50 +1,107 @@
 /* Connect 4 */
 
-.connectfour__wrapper {
+.wrapper {
     max-width: 800px;
     margin: 0 auto;
 }
-.connectfour__wrapper fieldset {
+.wrapper fieldset {
     padding: 1rem;
     margin-bottom: 1rem;
 }
-.connectfour__wrapper .control__group {
+.wrapper .control__group {
     display: flex;
     flex-flow: row nowrap;
     margin-bottom: 1rem;
     min-width: 5rem;
 }
-.connectfour__wrapper .control__group label {
+.wrapper .control__group label {
     display: block;
     min-width: 6rem;
 }
-.connectfour__wrapper .error__message {
+.wrapper .error__message {
     padding: 0 1rem;
     color: red;
 }
-.connectfour__wrapper form button[type=submit] {
+.wrapper form button[type=submit] {
     min-width: 6rem;
     padding: 1rem;
 }
-.connectfour__wrapper .hidden {
+.wrapper .hidden {
     visibility: hidden;
     display: none;
 }
-.connectfour__wrapper table {
+.wrapper table {
     width: 100%;
 }
-.connectfour__wrapper table th {
+.wrapper table th {
     font-weight: bold;
 }
-.connectfour__wrapper table td,
-.connectfour__wrapper table th {
+.wrapper table td,
+.wrapper table th {
     padding: .5rem;
 }
-.connectfour__wrapper table tr:nth-child(even) {
+.wrapper table tr:nth-child(even) {
     background-color: whitesmoke;
 }
-.connectfour__wrapper table td:first-child {
+.wrapper table td:first-child {
     font-weight: bold;
+}
+.hud {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    margin-bottom: 1rem;
+    background-color: black;
+}
+.hud--red {
+    color: red;
+}
+.hud--yellow {
+    color: yellow;
+}
+.board {
+    display: flex;
+    flex-flow: column nowrap;
+    padding: 1rem;
+    background-color: dodgerblue;
+}
+
+.board__row {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+}
+
+.board__location {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    padding: .25rem;
+}
+.board__location a {
+    text-decoration: none;
+}
+.board__token {
+    width: 4rem;
+    height: 4rem;
+    border-radius: 100%;
+}
+.board__token--red {
+    background-color: red;
+}
+.board__token--yellow {
+    background-color: yellow;
+}
+.board__token--empty {
+    background-color: white;
+}
+.connectfour_new_game {
+    display: block;
+    background: whitesmoke;
+    text-decoration: none;
+    color: black;
+    text-align: center;
+    padding: 5rem 7rem;
 }
 
 @media screen and (min-width: var(--small)) {

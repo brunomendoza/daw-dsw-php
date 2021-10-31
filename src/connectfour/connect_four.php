@@ -12,6 +12,8 @@ $player1;
 $player2;
 $jsonPlayers;
 
+
+
 $connectFourCookieName = "connectfour";
 
 $isPostRequest = $_SERVER["REQUEST_METHOD"] == "POST";
@@ -29,6 +31,7 @@ if ($isPostRequest) {
             $_POST["p1Country"],
             $_POST["p1Province"],
             $_POST["p1Age"],
+            32
         );
 
         $player2 = new Player(
@@ -39,6 +42,7 @@ if ($isPostRequest) {
             $_POST["p2Country"],
             $_POST["p2Province"],
             $_POST["p2Age"],
+            32
         );
 
         $jsonPlayers = json_encode(array(
@@ -52,6 +56,9 @@ if ($isPostRequest) {
 
         header("Location: game.php");
     }
+} else {
+    session_start();
+    session_unset();
 }
 
 ?>
@@ -131,8 +138,8 @@ if ($isPostRequest) {
                         <input type="radio" name="p1Color" id="p1-color-red" value="red" <?php echo $isPostRequest && $_POST["p1Color"] == "red" ? "checked" : ""; ?>>
                     </label>
                     <label for="last-name">
-                        Blue
-                        <input type="radio" name="p1Color" id="p1-color-blue" value="blue" <?php echo $isPostRequest && $_POST["p1Color"] == "blue" ? "checked" : ""; ?>>
+                        Yellow
+                        <input type="radio" name="p1Color" id="p1-color-yellow" value="yellow" <?php echo $isPostRequest && $_POST["p1Color"] == "yellow" ? "checked" : ""; ?>>
                     </label>
                     <span class="<?php echo !empty($errorMessages["p1Color"]) ? "error__message" : "hidden"; ?>">
                         <?php echo !empty($errorMessages["p1Color"]) ? $errorMessages["p1Color"] : "&nbsp;"; ?>
@@ -204,8 +211,8 @@ if ($isPostRequest) {
                         <input type="radio" name="p2Color" id="p2-color-red" value="red" <?php echo $isPostRequest && $_POST["p2Color"] == "red" ? "checked" : ""; ?>>
                     </label>
                     <label for="last-name">
-                        Blue
-                        <input type="radio" name="p2Color" id="p2-color-blue" value="blue" <?php echo $isPostRequest && $_POST["p2Color"] == "blue" ? "checked" : ""; ?>>
+                        Yellow
+                        <input type="radio" name="p2Color" id="p2-color-yellow" value="yellow" <?php echo $isPostRequest && $_POST["p2Color"] == "yellow" ? "checked" : ""; ?>>
                     </label>
                     <span class="<?php echo !empty($errorMessages["p2Color"]) ? "error__message" : "hidden"; ?>">
                         <?php echo !empty($errorMessages["p2Color"]) ? $errorMessages["p2Color"] : "&nbsp;"; ?>

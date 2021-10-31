@@ -12,6 +12,7 @@ class Player implements JsonSerializable {
     private string $country;
     private string $age;
     private string $color;
+    private int $tokenQuantity;
 
     public function __construct(
         string $firstName,
@@ -20,7 +21,8 @@ class Player implements JsonSerializable {
         string $address,
         string $country,
         string $province,
-        string $age
+        string $age,
+        int $tokenQuantity = 0,
     ) {
         $this->firstName = $firstName;
         $this->lastName = $lastName;
@@ -30,6 +32,7 @@ class Player implements JsonSerializable {
         $this->province = $province;
         $this->country = $country;
         $this->age = $age;
+        $this->tokenQuantity = $tokenQuantity;
     }
 
     public function getFirstName() {
@@ -67,6 +70,14 @@ class Player implements JsonSerializable {
             return "unknown";
         }
     }
+
+    public function getTokenQuantity() {
+        return $this->tokenQuantity;
+    }
+
+    public function setTokenQuantity(int $tokenQuantity) {
+        $this->tokenQuantity = $tokenQuantity;
+    }
     
     public function jsonSerialize() {
         return array(
@@ -77,6 +88,7 @@ class Player implements JsonSerializable {
             "country" => $this->country,
             "province" => $this->province,
             "age" => $this->age,
+            "tokenQuantity" => $this->tokenQuantity,
         );
     }
 }
