@@ -1,19 +1,24 @@
 version: "3.9"
 services:
-  web:
-    build: .
+  dsw:
+    build: ./dsw
     volumes:
       - "./src:/var/www/html"
     ports:
       - "8080:80"
+
   db:
-    image: mysql:8
+    build: ./db
     volumes:
-      - "mysql_db:/var/lib/mysql"
+      - "dsw_mysql_db:/var/lib/mysql"
+    expose:
+      - "3306"
     environment:
-      MYSQL_ROOT_PASSWORD: daw_dsw
-      MY_SQL_DATABASE: daw_dsw
-      MY_SQL_USER: dsw
-      MY_SQL_PASSWORD: dsw
+      MYSQL_ROOT_PASSWORD: dsw
+  adminer:
+    image: adminer
+    ports:
+      - "8090:8080"
+      
 volumes:
-  mysql_db:
+  dsw_mysql_db:
