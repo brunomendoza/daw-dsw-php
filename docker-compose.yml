@@ -3,7 +3,7 @@ services:
   dsw:
     build: ./dsw
     volumes:
-      - "./src:/var/www/html"
+      - "./dsw/src:/var/www/html"
     ports:
       - "8080:80"
 
@@ -15,6 +15,9 @@ services:
       - "3306"
     environment:
       MYSQL_ROOT_PASSWORD: dsw
+      MYSQL_DATABASE: commercedb
+      MYSQL_USER: dsw
+      MYSQL_PASSWORD: dsw
   adminer:
     image: adminer
     ports:

@@ -1,4 +1,4 @@
-CREATE DATABASE `commercedb`;
+-- CREATE DATABASE `commercedb`;
 
 USE commercedb;
 

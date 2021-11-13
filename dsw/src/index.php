@@ -53,6 +53,16 @@ include_once("./acme/functions.php");
                     </ul>
                 </div>
             </li>
+            <li>
+                <div>
+                    <h2>Login</h2>
+                    <ul>
+                        <li>
+                            <a href="./login/index.php">Login</a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
         </ul>
     </div>
 </body>
