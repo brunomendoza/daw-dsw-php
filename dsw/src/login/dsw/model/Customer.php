@@ -19,21 +19,24 @@ class Customer {
     private string $phoneNumber1;
     private string $phoneNumber2;
 
-    private function __construct(?int $customerID = null, ?string $username = null, ?string $password = null) {
-        $this->username = $username;
-        $this->password = $password;
-        $this->customerID = $customerID;
+    public function __construct() {
     }
 
-    public static function fromCustomerID(int $customerID): static {
-        $new = new static($customerID);
-        return $new;
-    }
+    // private function __construct(?int $customerID = null, ?string $username = null, ?string $password = null) {
+    //     $this->username = $username;
+    //     $this->password = $password;
+    //     $this->customerID = $customerID;
+    // }
 
-    public static function fromCredentials(string $username, string $password): static {
-        $new = new static(null, $username, $password);
-        return $new;
-    }
+    // public static function fromCustomerID(int $customerID): static {
+    //     $new = new static($customerID);
+    //     return $new;
+    // }
+
+    // public static function fromCredentials(string $username, string $password): static {
+    //     $new = new static(null, $username, $password);
+    //     return $new;
+    // }
     
     public function setName(string $name) {
         $this->name = $name;
