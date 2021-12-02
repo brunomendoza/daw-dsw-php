@@ -14,9 +14,9 @@ class Connection {
     private string $user;
     private string $password;
     
-    private PDO $db;
+    private PDO $dbh;
     
-    private bool $error;
+    private bool $errorExists;
     private string $errorMessage;
     
     public function __construct(string $host, string $dbname, string $user, string $password) {
@@ -26,31 +26,31 @@ class Connection {
         $this->password = $password;
         $this->errorExists = false;
         $this->errorMessage = "";
+
+        $this->open();
     }
     
-    public function open() {
+    private function open() {
         $host = sprintf("mysql:host=%s;dbname=%s",$this->host, $this->dbname);
 
         try { 
-            $this->db = new PDO($host, $this->user, $this->password);
-            $this->db->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
-            $this->db->exec("set names utf8mb4");
+            $this->dbh = new PDO($host, $this->user, $this->password);
+            $this->dbh->setAttribute(PDO::MYSQL_ATTR_USE_BUFFERED_QUERY, true);
+            $this->dbh->exec("set names utf8mb4");
         } catch (PDOException $e) {
-            $this->error = true;
+            $this->errorExists = true;
             $this->errorMessage = $e->getMessage();  
         }
     }
     
-   function __destruct() {
-        //destructor
+    function __destruct() {
     }
     
     public function errorExists() {
         return $this->errorExists;
-        
     }
     
-    public function errorMessage() {
+    public function getErrorMessage() {
         return $this->errorMessage;
     }
 }

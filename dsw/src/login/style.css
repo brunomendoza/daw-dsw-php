@@ -1,0 +1,31 @@
+.wrapper {
+    width: 360px;
+    margin: 0 auto;
+}
+
+form button[type=submit] {
+    padding: .5rem 1rem;
+}
+
+form fieldset {
+    margin-bottom: 1rem;
+}
+
+.control-group {
+    display: flex;
+    flex-flow: column;
+    margin-bottom: 1rem;
+}
+
+.control-group label {
+    padding: .20rem;
+}
+
+.error {
+    color: red;
+}
+
+.hidden {
+    display: none;
+    visibility: hidden;
+}
