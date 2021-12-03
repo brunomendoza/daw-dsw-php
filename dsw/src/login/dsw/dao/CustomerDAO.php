@@ -34,9 +34,17 @@ class CustomerDAO {
                     
                     $customer->setName($row["name"]);
                     $customer->setSurname1($row["firstlastname"]);
-                    $customer->setSurname2($row["secondlastname"]);
+                    $customer->setSurname2($row["secondlastname"] ?? "focker");
+                    $customer->setBirthdate(DateTime::createFromFormat('yyyy-mm-dd', $row['birthdaydate']));
                     $customer->setStreetName($row["streetdirection"]);
                     $customer->setStreetNumber(intval($row["streetnumber"]));
+                    $customer->setPostalCode(intval($row["provincecode"] ?? -1));
+                    $customer->setProvinceID(intval($row["provinceid"]));
+                    $customer->setCityID(intval($row["cityid"]));
+                    $customer->setCountryID(intval($row["countryid"]));
+                    $customer->setPhoneNumber1(intval($row["telephone1"]));
+                    $customer->setPhoneNumber2(intval($row["telephone2"] ?? -1));
+                    $customer->setEmail($row["email"]);
                 }
             }
             

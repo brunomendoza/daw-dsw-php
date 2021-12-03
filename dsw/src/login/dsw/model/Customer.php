@@ -2,6 +2,8 @@
 
 namespace dsw\model;
 
+use \DateTime;
+
 class Customer {
     private ?string $username;
     private ?string $password;
@@ -10,14 +12,16 @@ class Customer {
     private string $name;
     private string $surname1;
     private string $surname2;
-    private string $birthday;
+    private DateTime $birthdate;
     private string $streetName;
     private int $streetNumber;
+    private string $postalCode;
     private int $cityID;
     private int $provinceID;
     private int $countryID;
-    private string $phoneNumber1;
-    private string $phoneNumber2;
+    private int $phoneNumber1;
+    private int $phoneNumber2;
+    private string $email;
 
     public function __construct() {
     }
@@ -62,12 +66,12 @@ class Customer {
         return $this->surname2;
     }
     
-    public function setBirthday(string $birthday) {
-        $this->birthday = $birthday;
+    public function setBirthdate(Datetime $birthdate) {
+        $this->birthdate = $birthdate;
     }
 
-    public function getBirthday() {
-        return $this->birthday;
+    public function getBirthdate() {
+        return $this->birthdate;
     }
     
     public function setStreetName(string $streetName) {
@@ -92,6 +96,14 @@ class Customer {
 
     public function getCityID() {
         return $this->cityID;
+    }
+
+    public function setPostalCode(string $postalCode) {
+        $this->postalCode = $postalCode;
+    }
+    
+    public function getPostalCode() {
+        return $this->postalCode;
     }
     
     public function setProvinceID(string $provinceID) {
@@ -124,5 +136,13 @@ class Customer {
 
     public function getPhoneNumber2() {
         return $this->phoneNumber2;
+    }
+
+    public function setEmail(string $email) {
+        $this->email = $email;
+    }
+
+    public function getEmail() {
+        return $this->email;
     }
 }
