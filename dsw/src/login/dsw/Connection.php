@@ -53,4 +53,12 @@ class Connection {
     public function getErrorMessage() {
         return $this->errorMessage;
     }
+
+    function getCustomerById(int $customerID) {
+
+    }
+
+    function isAuthenticated(string $username, string $password) {
+
+    }
 }

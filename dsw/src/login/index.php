@@ -19,11 +19,17 @@ if (isset($_COOKIE["ckdatauser"])) {
         <form action="validateuser.php" method="post">
             <fieldset>
                 <legend>Login</legend>
+                <?php if (isset($_GET["authentication"])): ?>
+                    <span class="error <?php $_GET["authentication"] === "fail" ? "" : "hidden"; ?>">Authentication failed</span>
+                <?php endif; ?>
                 <div class="control-group">
                     <label for="username">Username</label>
                     <input type="text" name="username" id="username" value="<?php echo isset($_GET["previoususername"]) ? $_GET["previoususername"] : ""; ?>">
                     <?php if (isset($_GET["username"])): ?>
                         <span class="error <?php $_GET["username"] === "empty" ? "" : "hidden"; ?>">Username can't be empty</span>
+                    <?php endif; ?>
+                    <?php if (isset($_GET["usernameexists"])): ?>
+                        <span class="error <?php $_GET["usernameexists"] === "unavailable" ? "" : "hidden"; ?>">Username doesn't exist</span>
                     <?php endif; ?>
                 </div>
                 <div class="control-group">

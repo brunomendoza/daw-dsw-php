@@ -2,6 +2,8 @@
 
 namespace dsw\util;
 use \Exception;
+use \PDO, PDOException;
+use \dsw\dao\CustomerDAO;
 
 class Form {
     private static array $requiredFields = array(
@@ -53,6 +55,7 @@ class Form {
 
     public static function validateCredential(array $fields) {
         $errorMessages = array();
+        $customerDAO = new CustomerDAO();
 
         foreach (self::$credentialFields as $field) {
             if (!array_key_exists($field, $fields)) {
@@ -62,30 +65,13 @@ class Form {
             if (empty($fields[$field])) {
                 $errorMessages[$field] = "empty";
             }
-
-            // if (!empty($fields["username"]) && !self::usernameExists($fields["username"])) {
-            //     $errorMessages["username"] = "unavailable";
-            // }
         }
 
+        if (empty($fields["username"]) || !$customerDAO->exists($fields["username"])) {
+            $errorMessages["usernameexists"] = "unavailable";
+        }
+            
         return $errorMessages;
     }
-
-    // private static function usernameExists($username) {
-    //     $usernameExists = false;
-    //     try {
-    //         $dbh = new PDO('mysql:host=db;dbname=commercedb', $user, $password);
-
-    //         $value = $dbh->query('SELECT count(*) FROM customer WHERE username = ' . $username);
-
-    //         $username = $value > 0;
-
-    //         $dbh = null;
-    //     } catch (\Throwable $th) {
-    //         //throw $th;
-    //     }
-
-    //     return $usernameExists;
-    // }
 }
 
