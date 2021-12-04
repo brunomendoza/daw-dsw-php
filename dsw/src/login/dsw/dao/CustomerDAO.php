@@ -5,6 +5,7 @@ namespace dsw\dao;
 use \dsw\model\Customer;
 use \PDO;
 use \PDOException;
+use \DateTime;
 
 class CustomerDAO {
     private string $dsn;
@@ -18,7 +19,10 @@ class CustomerDAO {
     public function getById(int $customerID) {
         $query = 'SELECT * FROM customer WHERE customerid = :customerID';
         $customer = null;
-        $res;
+        $row;
+        $provinceDAO = new ProvinceDAO();
+        $cityDAO;
+        $countryDAO;
         
         try {
             $dbh = new PDO($this->dsn, $this->config['user'], $this->config['pass']);
@@ -26,16 +30,15 @@ class CustomerDAO {
             $sth->bindParam(':customerID', $customerID);
             
             if ($sth->execute()) {
-                $res = $sth->fetchAll();
+                $row = $sth->fetch();
                 
-                if (count($res) > 0) {
-                    $row = $res[0];
+                if ($row) {
                     $customer = new Customer();
                     
                     $customer->setName($row["name"]);
                     $customer->setSurname1($row["firstlastname"]);
                     $customer->setSurname2($row["secondlastname"] ?? "focker");
-                    $customer->setBirthdate(DateTime::createFromFormat('yyyy-mm-dd', $row['birthdaydate']));
+                    $customer->setBirthdate(DateTime::createFromFormat('Y-m-d', $row['birthdaydate']));
                     $customer->setStreetName($row["streetdirection"]);
                     $customer->setStreetNumber(intval($row["streetnumber"]));
                     $customer->setPostalCode(intval($row["provincecode"] ?? -1));

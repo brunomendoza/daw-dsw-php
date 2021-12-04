@@ -26,22 +26,6 @@ class Customer {
     public function __construct() {
     }
 
-    // private function __construct(?int $customerID = null, ?string $username = null, ?string $password = null) {
-    //     $this->username = $username;
-    //     $this->password = $password;
-    //     $this->customerID = $customerID;
-    // }
-
-    // public static function fromCustomerID(int $customerID): static {
-    //     $new = new static($customerID);
-    //     return $new;
-    // }
-
-    // public static function fromCredentials(string $username, string $password): static {
-    //     $new = new static(null, $username, $password);
-    //     return $new;
-    // }
-    
     public function setName(string $name) {
         $this->name = $name;
     }
