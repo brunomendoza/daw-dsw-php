@@ -37,4 +37,24 @@ class CountryDAO {
 
         return $country;
     }
+
+    public function getAll() {
+        $query = 'SELECT * FROM country';
+        $countries = array();
+
+        try {
+            $dbh = new PDO($this->dsn, $this->config['user'], $this->config['pass']);
+            $sth = $dbh->query($query);
+
+            if ($sth) {
+                foreach ($sth->fetchAll() as $country) {
+                    $countries[] = new Country($country["countryid"], $country["countryname"]);
+                }
+            }
+        } catch (PDOException $e) {
+            printf("Country: Exception catched: %s", $e.getMessage());
+        }
+
+        return $countries;
+    }
 }

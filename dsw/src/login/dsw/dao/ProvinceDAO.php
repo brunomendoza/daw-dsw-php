@@ -37,4 +37,24 @@ class ProvinceDAO {
 
         return $province;
     }
+
+    public function getAll() {
+        $query = 'SELECT * FROM province';
+        $provinces = array();
+
+        try {
+            $dbh = new PDO($this->dsn, $this->config['user'], $this->config['pass']);
+            $sth = $dbh->query($query);
+
+            if ($sth) {
+                foreach ($sth->fetchAll() as $province) {
+                    $provinces[] = new Province($province["provinceid"], $province["provincename"]);
+                }
+            }
+        } catch (PDOException $e) {
+            printf("Province: Exception catched: %s", $e.getMessage());
+        }
+
+        return $provinces;
+    }
 }

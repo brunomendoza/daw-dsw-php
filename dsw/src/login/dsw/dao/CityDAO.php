@@ -37,4 +37,24 @@ class CityDAO {
 
         return $city;
     }
+
+    public function getAll() {
+        $query = 'SELECT * FROM city';
+        $cities = array();
+
+        try {
+            $dbh = new PDO($this->dsn, $this->config['user'], $this->config['pass']);
+            $sth = $dbh->query($query);
+
+            if ($sth) {
+                foreach ($sth->fetchAll() as $city) {
+                    $cities[] = new City($city["cityid"], $city["cityname"]);
+                }
+            }
+        } catch (PDOException $e) {
+            printf("City: Exception catched: %s", $e.getMessage());
+        }
+
+        return $cities;
+    }
 }
