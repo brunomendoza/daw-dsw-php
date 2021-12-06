@@ -1,23 +1,25 @@
 <?php
 
 namespace dsw\util;
+
 use \Exception;
 use \PDO, PDOException;
 use \dsw\dao\CustomerDAO;
+use \ArrayObject;
 
 class Form {
     private static array $requiredFields = array(
+        "username",
+        "password",
         "name",
         "surname1",
-        "surname2",
-        "birthday",
+        "birthdate",
         "streetName",
         "streetNumber",
-        "cityID",
-        "provinceID",
-        "countryID",
+        "cityId",
+        "provinceId",
+        "countryId",
         "phoneNumber1",
-        "phoneNumber2"
     );
 
     private static array $credentialFields = array(
@@ -25,14 +27,16 @@ class Form {
         "password"
     );
 
-    public function __construct($fields) {
+    public function __construct() {
     }
 
     public static function validate(array $fields) {
-        $obj = new ArrayObject($self::requiredFields);
+        $obj = new ArrayObject(self::$requiredFields);
         $iterator = $obj->getIterator();
         $current;
         $errorMessages = array();
+
+        $customerDao = new customerDAO();
 
         while ($iterator->valid()) {
             $current = $iterator->current();
@@ -46,8 +50,12 @@ class Form {
 
         foreach (self::$requiredFields as $name) {
             if (empty($fields[$name])) {
-                $errorMessages[$name] = sprintf("% is empty", $name);
+                $errorMessages[$name] = sprintf("%s is empty", $name);
             }
+        }
+
+        if (!empty($fields["username"]) && $customerDao->exists($fields["username"])) {
+            $errorMessages["usernameExists"] = "true";
         }
 
         return $errorMessages;

@@ -8,6 +8,8 @@ class Customer {
     private ?string $username;
     private ?string $password;
     private ?int $customerID;
+    private ?DateTime $insertDate;
+    private ?DateTime $updateDate;
 
     private string $name;
     private string $surname1;
@@ -24,6 +26,30 @@ class Customer {
     private string $email;
 
     public function __construct() {
+    }
+
+    public function setUsername(string $username) {
+        $this->username = $username;
+    }
+
+    public function getUsername() {
+        return $this->username;
+    }
+
+    public function getPassword() {
+        return $this->password;
+    }
+
+    public function setPassword(string $password) {
+        $this->password = $password;
+    }
+
+    public function setCustomerId(int $customerId) {
+        $this->customerId = $customerID;
+    }
+
+    public function getCustomerId() {
+        return $this->customerID;
     }
 
     public function setName(string $name) {
@@ -128,5 +154,29 @@ class Customer {
 
     public function getEmail() {
         return $this->email;
+    }
+
+    public function setInsertDate(DateTime $date) {
+        $this->insertDate = $date;
+    }
+
+    public function getInsertDate() {
+        return $this->insertDate;
+    }
+
+    public function setUpdateDate(DateTime $date) {
+        $this->updateDate = $date;
+    }
+
+    public function getUpdateDate() {
+        return $this->updateDate;
+    }
+
+    public function getId() {
+        return $this->customerID;
+    }
+
+    public function setId(int $id) {
+        $this->customerID = $id;
     }
 }

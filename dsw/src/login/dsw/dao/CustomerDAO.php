@@ -61,7 +61,61 @@ class CustomerDAO {
     }
     
     public function save(Customer $customer) {
-        $query = "INSERT INTO customer (name) VALUES ()";
+        $query = "INSERT INTO customer (username, password, name, firstlastname, secondlastname, birthdaydate, streetdirection, streetnumber, provincecode, cityid, provinceid, countryid, telephone1, telephone2, email, insertdate, updatedate) VALUES (:username, :password, :name, :surname1, :surname2, :birthdate, :streetName, :streetNumber, :postalCode, :cityId, :provinceId, :countryId, :phoneNumber1, :phoneNumber2, :email, :insertDate, :updateDate)";
+
+        try {
+            $dbh = new PDO($this->dsn, $this->config['user'], $this->config['pass']);
+            $sth = $dbh->prepare($query);
+
+            $_username = $customer->getUsername();
+            $_password = $customer->getPassword();
+            $_name = $customer->getName();
+            $_surname1 = $customer->getSurname1();
+            $_surname2 = $customer->getSurname2();
+            $_birthdate = $customer->getBirthdate()->format("c");
+            $_streetName = $customer->getStreetName();
+            $_streetNumber = $customer->getStreetNumber();
+            $_postalCode = $customer->getPostalCode();
+            $_cityId = $customer->getCityId();
+            $_provinceId = $customer->getProvinceId();
+            $_countryId = $customer->getCountryId();
+            $_phoneNumber1 = $customer->getPhoneNumber1();
+            $_phoneNumber2 = $customer->getPhoneNumber2();
+            $_email = $customer->getEmail();
+            $_insertDate = $customer->getInsertDate()->format("c");
+            $_updateDate = $customer->getUpdateDate()->format("c");
+
+            $sth->bindParam(':username', $_username, PDO::PARAM_STR);
+            $sth->bindParam(':password', $_password);
+            $sth->bindParam(':name', $_name);
+            $sth->bindParam(':surname1', $_surname1);
+            $sth->bindParam(':surname2', $_surname2);
+            $sth->bindParam(':birthdate', $_birthdate);
+            $sth->bindParam(':streetName', $_streetName);
+            $sth->bindParam(':streetNumber', $streetNumber);
+            $sth->bindParam(':postalCode', $_postalCode);
+            $sth->bindParam(':cityId', $_cityId);
+            $sth->bindParam(':provinceId', $_provinceId);
+            $sth->bindParam(':countryId', $_countryId);
+            $sth->bindParam(':phoneNumber1', $_phoneNumber1);
+            $sth->bindParam(':phoneNumber2', $_phoneNumber2);
+            $sth->bindParam(':email', $_email);
+            $sth->bindParam(':insertDate', $_insertDate);
+            $sth->bindParam(':updateDate', $_updateDate);
+
+            if ($sth->execute()) {
+                $customer->setId(intval($dbh->lastInsertId("customer")));
+            }
+            
+            $sth = null;
+            $dbh = null;
+
+            return $customer;
+        } catch (PDOException $e) {
+            printf("Customer: Exception catched: %s", $e->getMessage());
+        }
+
+        return null;
     }
     
     public function authenticate(string $username, string $password) {

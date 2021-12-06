@@ -40,21 +40,7 @@ if (isset($_COOKIE["ckdatauser"])) {
     $city = $cityDAO->getById($customer->getCityID());
     $country = $countryDAO->getById($customer->getCountryID());
 
-    $customerDto = new CustomerDTO(
-        $customer->getName(),
-        $customer->getSurname1(),
-        $customer->getSurname2(),
-        $customer->getBirthdate(),
-        $customer->getStreetName(),
-        $customer->getStreetNumber(),
-        $customer->getPostalCode(),
-        $city->getName(),
-        $province->getName(),
-        $country->getName(),
-        $customer->getPhoneNumber1(),
-        $customer->getPhoneNumber2(),
-        $customer->getEmail(),
-    );
+    $customerDto = new CustomerDTO($customer);
 
     session_start();
     $_SESSION["customer"] = json_encode($customerDto);
@@ -95,21 +81,7 @@ if (isset($_COOKIE["ckdatauser"])) {
                 $city = $cityDAO->getById($customer->getCityID());
                 $country = $countryDAO->getById($customer->getCountryID());
             
-                $customerDto = new CustomerDTO(
-                    $customer->getName(),
-                    $customer->getSurname1(),
-                    $customer->getSurname2(),
-                    $customer->getBirthdate(),
-                    $customer->getStreetName(),
-                    $customer->getStreetNumber(),
-                    $customer->getPostalCode(),
-                    $city->getName(),
-                    $province->getName(),
-                    $country->getName(),
-                    $customer->getPhoneNumber1(),
-                    $customer->getPhoneNumber2(),
-                    $customer->getEmail(),
-                );
+                $customerDto = new CustomerDTO($customer);
 
                 session_start();
                 $_SESSION['customer'] = json_encode($customerDto);

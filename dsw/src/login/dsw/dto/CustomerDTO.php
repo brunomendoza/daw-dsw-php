@@ -2,6 +2,14 @@
 
 namespace dsw\dto;
 
+require_once(__DIR__ . "/../model/Customer.php");
+require_once(__DIR__ . "/../dao/CityDAO.php");
+require_once(__DIR__ . "/../dao/ProvinceDAO.php");
+require_once(__DIR__ . "/../dao/CountryDAO.php");
+
+use \dsw\model\Customer;
+use \dsw\dao\{CityDAO, ProvinceDAO, CountryDAO};
+
 use \JsonSerializable;
 use \DateTime;
 
@@ -20,35 +28,29 @@ class CustomerDTO implements JsonSerializable {
     private string $phoneNumber2;
     private string $email;
 
-    public function __construct(
-        string $name,
-        string $surname1,
-        string $surname2,
-        DateTime $birthdate,
-        string $streetName,
-        string $streetNumber,
-        string $postalCode,
-        string $city,
-        string $province,
-        string $country,
-        string $phoneNumber1,
-        string $phoneNumber2,
-        string $email
-    ) {
-        $this->name = $name;
-        $this->surname1 = $surname1;
-        $this->surname1 = $surname1;
-        $this->surname2 = $surname2;
-        $this->birthdate = $birthdate;
-        $this->streetName = $streetName;
-        $this->streetNumber = $streetNumber;
-        $this->postalCode = $postalCode;
-        $this->city = $city;
-        $this->province = $province;
-        $this->country = $country;
-        $this->phoneNumber1 = $phoneNumber1;
-        $this->phoneNumber2 = $phoneNumber2;
-        $this->email = $email;
+    public function __construct(Customer $customer) {
+        self::initialize($customer);
+    }
+    
+    private function initialize($customer) {
+        $cityDao = new CityDAO();
+        $provinceDao = new ProvinceDAO();
+        $countryDao = new CountryDAO();
+        
+        $this->surname1 = $customer->getSurname1();
+        $this->surname2 = $customer->getSurname2();
+        $this->birthdate = $customer->getBirthdate();
+        $this->streetName = $customer->getStreetName();
+        $this->streetNumber = $customer->getStreetNumber();
+        $this->postalCode = $customer->getPostalCode();
+        $this->phoneNumber1 = $customer->getPhoneNumber1();
+        $this->phoneNumber2 = $customer->getPhoneNumber2();
+        $this->email = $customer->getEmail();
+        
+        $this->city = $cityDao->getById($customer->getCityId())->getName();
+        $this->province = $provinceDao->getById($customer->getProvinceId())->getName();
+        $this->country = $countryDao->getById($customer->getCountryId())->getName();
+        $this->name = $customer->getName();
     }
 
     public function jsonSerialize() {
